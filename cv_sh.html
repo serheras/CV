@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serhii Herasymov — Driver & Logistics Professional</title>
+<link href="https://fonts.googleapis.com/css2?family=Rye&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand:    #f2e4c4;
+    --parch:   #e8d5a3;
+    --aged:    #d4bc80;
+    --ink:     #1e130a;
+    --sepia:   #5c3d1e;
+    --rust:    #8b3a1a;
+    --shadow:  #2a1a08;
+    --faded:   #7a6040;
+    --accent:  #6b1f0f;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #140d06;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,0.01) 60px, rgba(255,255,255,0.01) 61px),
+      repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.01) 60px, rgba(255,255,255,0.01) 61px);
+    min-height: 100vh;
+    padding: 3rem 1rem;
+    font-family: 'Libre Baskerville', Georgia, serif;
+    color: var(--ink);
+  }
+
+  /* ── PAPER ── */
+  .sheet {
+    max-width: 860px;
+    margin: 0 auto;
+    background: var(--sand);
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+    position: relative;
+    padding: 0;
+    box-shadow:
+      0 0 0 2px var(--sepia),
+      0 0 0 8px var(--shadow),
+      0 0 0 10px var(--sepia),
+      0 0 60px rgba(0,0,0,0.9),
+      inset 0 0 120px rgba(92,61,30,0.12);
+  }
+
+  /* burn edges */
+  .sheet::before {
+    content: '';
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 60% 10% at 50% 0%,   rgba(40,20,5,0.18) 0%, transparent 100%),
+      radial-gradient(ellipse 60% 10% at 50% 100%, rgba(40,20,5,0.18) 0%, transparent 100%),
+      radial-gradient(ellipse 10% 60% at 0%   50%, rgba(40,20,5,0.18) 0%, transparent 100%),
+      radial-gradient(ellipse 10% 60% at 100% 50%, rgba(40,20,5,0.18) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  /* ── HEADER BAND ── */
+  .header-band {
+    position: relative;
+    background: var(--ink);
+    padding: 0.6rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid var(--rust);
+  }
+  .header-band .tagline {
+    font-family: 'Special Elite', cursive;
+    color: var(--aged);
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+  .header-band .location {
+    font-family: 'Special Elite', cursive;
+    color: var(--aged);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.65;
+    text-align: right;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    padding: 3rem 2.5rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid var(--aged);
+  }
+
+  .hero::after {
+    content: '✦';
+    position: absolute; bottom: -0.8rem; left: 50%;
+    transform: translateX(-50%);
+    background: var(--sand);
+    padding: 0 1rem;
+    color: var(--rust);
+    font-size: 1rem;
+  }
+
+  .wanted-label {
+    font-family: 'Rye', cursive;
+    font-size: 0.85rem;
+    letter-spacing: 10px;
+    color: var(--faded);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+
+  .name {
+    font-family: 'Rye', cursive;
+    font-size: clamp(2.4rem, 7vw, 4.2rem);
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+  }
+
+  .name::before,
+  .name::after {
+    content: '─────';
+    font-family: 'Special Elite', cursive;
+    color: var(--rust);
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .name::before { right: calc(100% + 1rem); }
+  .name::after  { left:  calc(100% + 1rem); }
+
+  .title-line {
+    margin-top: 0.9rem;
+    font-family: 'Special Elite', cursive;
+    font-size: 0.85rem;
+    letter-spacing: 5px;
+    color: var(--sepia);
+    text-transform: uppercase;
+  }
+
+  /* ── ORNAMENTAL RULE ── */
+  .ornament {
+    text-align: center;
+    color: var(--rust);
+    font-size: 0.9rem;
+    letter-spacing: 6px;
+    margin: 0.4rem 0;
+    opacity: 0.6;
+  }
+
+  /* ── BODY LAYOUT ── */
+  .body-grid {
+    display: grid;
+    grid-template-columns: 1fr 2.2fr;
+    gap: 0;
+    position: relative;
+  }
+
+  .col-left {
+    padding: 2rem 1.6rem 2rem 2.5rem;
+    border-right: 1px solid var(--aged);
+    position: relative;
+  }
+
+  .col-right {
+    padding: 2rem 2.5rem 2rem 2rem;
+  }
+
+  /* ── SECTION HEADS ── */
+  .sec-head {
+    font-family: 'Rye', cursive;
+    font-size: 0.72rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--aged);
+    padding-bottom: 0.4rem;
+    margin-bottom: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .sec-head span { opacity: 0.5; font-size: 0.9rem; }
+
+  /* ── CONTACT BLOCK ── */
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.75rem;
+  }
+  .contact-label {
+    font-family: 'Special Elite', cursive;
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin-bottom: 0.1rem;
+  }
+  .contact-value {
+    font-size: 0.82rem;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .contact-value a { color: var(--accent); text-decoration: none; }
+
+  /* ── SKILLS ── */
+  .skill-item {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: var(--sepia);
+    padding: 0.25rem 0;
+    border-bottom: 1px dotted var(--aged);
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+  }
+  .skill-item::before {
+    content: '◆';
+    color: var(--rust);
+    font-size: 0.5rem;
+    flex-shrink: 0;
+    position: relative;
+    top: -1px;
+  }
+
+  /* ── LICENCES ── */
+  .badge-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+    margin-top: 0.2rem;
+  }
+  .badge {
+    background: var(--parch);
+    border: 1px solid var(--aged);
+    font-family: 'Special Elite', cursive;
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0.35rem 0.3rem;
+    color: var(--sepia);
+    line-height: 1.3;
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-item {
+    margin-bottom: 1.7rem;
+    position: relative;
+    padding-left: 0.9rem;
+  }
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 6px;
+    width: 3px; height: calc(100% - 10px);
+    background: linear-gradient(to bottom, var(--rust), transparent);
+    border-radius: 2px;
+  }
+
+  .exp-dates {
+    font-family: 'Special Elite', cursive;
+    font-size: 0.62rem;
+    letter-spacing: 2px;
+    color: var(--faded);
+    text-transform: uppercase;
+    margin-bottom: 0.15rem;
+  }
+
+  .exp-company {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .exp-role {
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--rust);
+    margin-bottom: 0.45rem;
+  }
+
+  .exp-desc {
+    font-size: 0.8rem;
+    line-height: 1.65;
+    color: var(--sepia);
+  }
+
+  .exp-desc li {
+    list-style: none;
+    padding-left: 0.9rem;
+    position: relative;
+    margin-bottom: 0.2rem;
+  }
+  .exp-desc li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--rust);
+  }
+
+  /* gap note styling */
+  .gap-note {
+    background: var(--parch);
+    border-left: 3px solid var(--aged);
+    padding: 0.5rem 0.75rem;
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--faded);
+    margin-bottom: 1.7rem;
+    margin-left: 0.9rem;
+  }
+
+  /* ── EARLY TRAIL ── */
+  .early-trail {
+    background: var(--parch);
+    border: 1px solid var(--aged);
+    padding: 1rem 1.2rem;
+    font-size: 0.78rem;
+    color: var(--sepia);
+    line-height: 1.7;
+    margin-top: 0.5rem;
+  }
+  .early-trail strong {
+    color: var(--ink);
+    font-size: 0.75rem;
+    font-family: 'Special Elite', cursive;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  /* ── EDUCATION ── */
+  .edu-item {
+    margin-bottom: 1rem;
+  }
+  .edu-place {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--ink);
+  }
+  .edu-detail {
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--faded);
+  }
+
+  /* ── FOOTER ── */
+  .footer-band {
+    background: var(--ink);
+    padding: 1.2rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    border-top: 3px solid var(--rust);
+  }
+  .footer-band .footer-quote {
+    font-family: 'Special Elite', cursive;
+    color: var(--aged);
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    font-style: italic;
+    opacity: 0.75;
+    max-width: 380px;
+  }
+  .footer-band .footer-contact {
+    font-family: 'Special Elite', cursive;
+    color: var(--rust);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  /* ── DIVIDER ── */
+  .full-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--aged), transparent);
+    margin: 0 2.5rem;
+  }
+
+  /* ── SECTION SPACING ── */
+  .col-left > * + * { margin-top: 1.6rem; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .sheet { animation: fadeIn 0.8s ease both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 620px) {
+    .body-grid { grid-template-columns: 1fr; }
+    .col-left { border-right: none; border-bottom: 1px solid var(--aged); padding-bottom: 1.5rem; }
+    .name::before, .name::after { display: none; }
+    .header-band, .footer-band { flex-direction: column; text-align: center; }
+    .footer-band .footer-contact { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <!-- TOP BAND -->
+  <div class="header-band">
+    <div class="tagline">Driver · Logistics · Fleet & Warehouse</div>
+    <div class="location">Bytom, Silesia, Poland<br>Open to relocation</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="wanted-label">Curriculum Vitae</span>
+    <div class="name">Serhii Herasymov</div>
+    <div class="title-line">International Truck Driver &amp; Logistics Professional</div>
+    <div class="ornament" style="margin-top:1rem;">✦ &nbsp; ✦ &nbsp; ✦</div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body-grid">
+
+    <!-- LEFT -->
+    <div class="col-left">
+
+      <section>
+        <div class="sec-head"><span>✉</span> Contact</div>
+        <div class="contact-item">
+          <span class="contact-label">Polish Line</span>
+          <span class="contact-value">+48 721 781 389</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">WhatsApp · Viber · Telegram</span>
+          <span class="contact-value">+380 93 279 4075</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Email</span>
+          <span class="contact-value"><a href="mailto:932794075@i.ua">932794075@i.ua</a></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Languages</span>
+          <span class="contact-value">Ukrainian · Russian · English (fluent)</span>
+        </div>
+      </section>
+
+      <section>
+        <div class="sec-head"><span>🪪</span> Licences &amp; Certs</div>
+        <div class="badge-grid">
+          <div class="badge">Polish Licence<br>All Categories</div>
+          <div class="badge">CE<br>Heavy Haulage</div>
+          <div class="badge">ADR<br>Basic</div>
+          <div class="badge">ADR<br>Cistern</div>
+          <div class="badge">Canadian AZ<br>Ontario</div>
+          <div class="badge">Tractor<br>Licence</div>
+        </div>
+      </section>
+
+      <section>
+        <div class="sec-head"><span>◈</span> Strengths</div>
+        <div class="skill-item">Logistics coordination &amp; fleet management</div>
+        <div class="skill-item">Commercial negotiations &amp; client relations</div>
+        <div class="skill-item">Warehouse operations</div>
+        <div class="skill-item">Learning agility — AZ licence acquired at 55</div>
+        <div class="skill-item">PC proficient, adaptable to new systems</div>
+      </section>
+
+      <section>
+        <div class="sec-head"><span>◈</span> Vehicles Operated</div>
+        <div class="skill-item">Containers 20' / 40' / 45' / 53'</div>
+        <div class="skill-item">Flatbed &amp; stepdeck trailers</div>
+        <div class="skill-item">Bobtail trucks &amp; chassis</div>
+        <div class="skill-item">Fuel tanker · Fire engine</div>
+        <div class="skill-item">Dump truck 13t · Gravel hauler 16t</div>
+      </section>
+
+      <section>
+        <div class="sec-head"><span>◈</span> Education</div>
+        <div class="edu-item">
+          <div class="edu-place">Kyiv Linguistic University</div>
+          <div class="edu-detail">Specialist's Degree — English, 1991–1996</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-place">CHET Driving School, Canada</div>
+          <div class="edu-detail">AZ Truck Driver Course, 2022</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-place">Vocational School №5, Khorol</div>
+          <div class="edu-detail">Tractor &amp; Truck Driver Certification, 1985–1986</div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="col-right">
+
+      <div class="sec-head"><span>◈</span> Experience</div>
+
+      <div class="exp-item">
+        <div class="exp-dates">Jul 2022 – Jun 2025 &nbsp;·&nbsp; Mississauga, Ontario, Canada</div>
+        <div class="exp-company">Musket Transport Ltd</div>
+        <div class="exp-role">AZ Truck Driver — City Container &amp; Maintenance Departments</div>
+        <ul class="exp-desc">
+          <li>Hauled 20', 40' and 45' containers across GTA and Ontario — rail terminals (CN, CP) to customer sites.</li>
+          <li>Relocated equipment (bobtails, chassis, 53' trailers, flatbeds, stepdecks) between yards and suppliers.</li>
+          <li>Joined as Mechanic's Assistant while completing AZ course; progressed to solo line runs.</li>
+        </ul>
+      </div>
+
+      <div class="gap-note">
+        2019 – 2022 · Family period: supported spouse's beauty business; occasional Uber driving in Kyiv. Left Ukraine with family after the 2022 invasion.
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dates">Dec 2013 – Jul 2019 &nbsp;·&nbsp; Kyiv, Ukraine</div>
+        <div class="exp-company">Pickard &amp; Co.</div>
+        <div class="exp-role">Manager, Commercial Real Estate</div>
+        <ul class="exp-desc">
+          <li>Managed logistics-site and warehouse leasing — tenders, negotiations, client reporting.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dates">Dec 2006 – Dec 2009 &nbsp;·&nbsp; Kyiv, Ukraine</div>
+        <div class="exp-company">Colliers International</div>
+        <div class="exp-role">Leading Consultant, Commercial Real Estate</div>
+        <ul class="exp-desc">
+          <li>Sourced and closed warehouse lease agreements for major logistics clients.</li>
+          <li>Maintained ongoing relationships with large-site landlords.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dates">May 2005 – Sep 2006 &nbsp;·&nbsp; Kyiv, Ukraine</div>
+        <div class="exp-company">ASNOVA Holding</div>
+        <div class="exp-role">Logistics Manager</div>
+        <ul class="exp-desc">
+          <li>Managed holding-level supply chain; negotiated with warehouse equipment and machinery suppliers.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dates">Jun 1998 – May 2005 &nbsp;·&nbsp; Kyiv, Ukraine</div>
+        <div class="exp-company">Kraft Foods</div>
+        <div class="exp-role">Fleet Controller → Manager, Warehouse &amp; Transport</div>
+        <ul class="exp-desc">
+          <li>Ran all company freight — local and international — and managed own + third-party warehouses.</li>
+          <li>Organised fleet servicing, maintenance scheduling and usage control.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dates">Jul 1992 – Jun 1997 &nbsp;·&nbsp; Kyiv, Ukraine</div>
+        <div class="exp-company">U.S. Embassy in Ukraine</div>
+        <div class="exp-role">Driver → Motor Pool Supervisor</div>
+        <ul class="exp-desc">
+          <li>Drove for the Marine Security Guard and Defense Attaché Office.</li>
+          <li>As Supervisor: coordinated the full Embassy fleet, scheduled pool drivers, oversaw maintenance.</li>
+        </ul>
+      </div>
+
+      <div class="full-divider" style="margin: 0 0 1.2rem;"></div>
+
+      <div class="sec-head" style="margin-bottom:0.8rem;"><span>◈</span> Early Driving Career — 1986–1992</div>
+      <div class="early-trail">
+        <strong>Before the desk work, there was the road.</strong>
+        Tractor driver on a collective farm (Poltava region) · Army truck driver during compulsory service in Russia (8-ton flatbed, fuel tanker, fire engine) · Flatbed and dump-truck driver in Saratov and Lubny (3.5t to 16t rigs) · Car driver in Kyiv private company.
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-band">
+    <div class="footer-quote">"Forty years behind the wheel, across three countries and four decades of logistics. Available immediately."</div>
+    <div class="footer-contact">
+      +48 721 781 389<br>
+      932794075@i.ua
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
