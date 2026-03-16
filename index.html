@@ -407,6 +407,73 @@
   }
   .sheet { animation: fadeIn 0.8s ease both; }
 
+  /* ── DOCUMENTS SECTION ── */
+  .docs-band {
+    padding: 2rem 2.5rem;
+    border-top: 1px solid var(--aged);
+    background: var(--parch);
+  }
+
+  .docs-viewer-wrap {
+    border: 1px solid var(--aged);
+    overflow: hidden;
+  }
+
+  .docs-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 1.2rem;
+    background: var(--ink);
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .docs-label {
+    font-family: 'Special Elite', cursive;
+    font-size: 0.68rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--aged);
+    opacity: 0.75;
+  }
+
+  .docs-dl-btn {
+    font-family: 'Special Elite', cursive;
+    font-size: 0.68rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--aged);
+    background: transparent;
+    border: 1px solid var(--rust);
+    padding: 0.3rem 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .docs-dl-btn:hover {
+    background: var(--rust);
+    color: var(--sand);
+  }
+
+  .docs-iframe {
+    width: 100%;
+    height: 520px;
+    border: none;
+    display: block;
+    background: #1a1a1a;
+  }
+
+  .docs-fallback {
+    padding: 2rem;
+    text-align: center;
+    font-family: 'Special Elite', cursive;
+    font-size: 0.8rem;
+    color: var(--faded);
+  }
+
+  .docs-fallback a { color: var(--accent); }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 620px) {
     .body-grid { grid-template-columns: 1fr; }
@@ -453,7 +520,7 @@
         </div>
         <div class="contact-item">
           <span class="contact-label">Email</span>
-          <span class="contact-value"><a href="mailto:932794075@i.ua">932794075@i.ua</a></span>
+          <span class="contact-value"><a href="/cdn-cgi/l/email-protection#cff6fcfdf8f6fbfff8fa8fa6e1baae"><span class="__cf_email__" data-cfemail="84bdb7b6b3bdb0b4b3b1c4edaaf1e5">[email&#160;protected]</span></a></span>
         </div>
         <div class="contact-item">
           <span class="contact-label">Languages</span>
@@ -588,16 +655,36 @@
     </div>
   </div>
 
+  <!-- DOCUMENTS SECTION -->
+  <div class="docs-band">
+    <div class="sec-head" style="margin-bottom:1.2rem;"><span>◈</span> Documents &amp; Certificates</div>
+    <div class="docs-viewer-wrap">
+      <div class="docs-toolbar">
+        <span class="docs-label">Official Documents — DL · ADR · Tacho</span>
+        <a class="docs-dl-btn" href="/docs/all.pdf" download>⬇ Download PDF</a>
+      </div>
+      <iframe
+        class="docs-iframe"
+        src="/docs/all.pdf"
+        title="Serhii Herasymov — Official Documents">
+        <div class="docs-fallback">
+          Your browser cannot display the PDF inline.
+          <a href="/docs/all.pdf" download>Click here to download</a>.
+        </div>
+      </iframe>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <div class="footer-band">
     <div class="footer-quote">"Forty years behind the wheel, across three countries and four decades of logistics. Available immediately."</div>
     <div class="footer-contact">
-      +48 721 781 389<br>
+      +48 721 781 389 &nbsp;·&nbsp; Poland<br>
+      +380 93 279 4075 &nbsp;·&nbsp; WhatsApp / Viber<br>
       932794075@i.ua
     </div>
   </div>
 
-</div>
-
+</div><!-- .sheet -->
 </body>
 </html>
